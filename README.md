@@ -84,6 +84,10 @@ com.meli.wallet
 * **Razón:** n un entorno de alta concurrencia financiera, es vital prevenir el "double spending". El bloqueo pesimista asegura que solo una transacción modifique una cuenta a la vez.
 * **Persistencia:** Uso de PostgreSQL con tipos `NUMERIC` para evitar errores de redondeo.
 
+### ADR 05: Implementación del Core Financiero
+* **Patrón:** Transaction Script dentro de un Servicio de Aplicación.
+* **Control** de Concurrencia: Uso de `@Lock(LockModeType.PESSIMISTIC_WRITE)` para evitar el problema de "Lost Updates" en saldos.
+* **Robustez:** Uso de `@Transactional` para garantizar la consistencia ACID de la transferencia.
 ---
 
 ## 🛠️ Guía de Ejecución Local
