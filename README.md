@@ -83,3 +83,10 @@ com.meli.wallet
 * **Estrategia:** Se implementa Pessimistic Locking (`SELECT FOR UPDATE`) para las operaciones de actualización de saldo.
 * **Razón:** n un entorno de alta concurrencia financiera, es vital prevenir el "double spending". El bloqueo pesimista asegura que solo una transacción modifique una cuenta a la vez.
 * **Persistencia:** Uso de PostgreSQL con tipos `NUMERIC` para evitar errores de redondeo.
+
+---
+
+## 🛠️ Guía de Ejecución Local
+1. Asegurarse de tener Docker instalado y corriendo.
+2. Ejecutar `docker-compose up -d` para levantar la base de datos.
+3. Ejecutar la aplicación desde el IDE o con `./mvnw spring-boot:run`.
