@@ -78,3 +78,8 @@ com.meli.wallet
 
 ### ADR 03: Manejo de Precisión Financiera
 * **Decisión:** Uso estricto de `BigDecimal` para montos monetarios y códigos ISO 4217 para divisas, evitando errores de precisión de punto flotante.
+
+### ADR 04: Integridad de Saldo y Locking
+* **Estrategia:** Se implementa Pessimistic Locking (`SELECT FOR UPDATE`) para las operaciones de actualización de saldo.
+* **Razón:** n un entorno de alta concurrencia financiera, es vital prevenir el "double spending". El bloqueo pesimista asegura que solo una transacción modifique una cuenta a la vez.
+* **Persistencia:** Uso de PostgreSQL con tipos `NUMERIC` para evitar errores de redondeo.
